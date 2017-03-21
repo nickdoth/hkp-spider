@@ -1,8 +1,8 @@
 # hkp-spider
 
-A specified crawler for hkp.
+Crawlers for hkp.
 
-**This program is under active development**
+**NOTE: This program is under active development.**
 
 # Install & Run
 
@@ -15,13 +15,13 @@ npm install
 npm run build
 ```
 
-crawler for `/cs/detail_layer.jsp*`:
+Crawler for `/cs/detail_layer.jsp*`:
 
 ```shell
 npm run cs
 ```
 
-crawler for `/tx/index.jsp*`:
+Crawler for `/tx/index.jsp*`:
 
 ```shell
 npm run tx

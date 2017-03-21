@@ -1,0 +1,27 @@
+{
+  "name": "hkp-spider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tx": "node ./lib/tx",
+    "cs": "node ./lib/cs",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "iconv-lite": "^0.4.15",
+    "jsdom": "^9.12.0",
+    "superagent": "^3.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.2.1",
+    "@types/iconv-lite": "0.0.1",
+    "@types/jsdom": "^2.0.30",
+    "@types/node": "^7.0.8",
+    "@types/superagent": "^2.0.36"
+  }
+}

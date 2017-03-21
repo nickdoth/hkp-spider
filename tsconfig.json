@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "outDir": "./lib",
+        "lib": [
+            "es2015",
+            "es2015.promise",
+            "dom"
+        ]
+    }
+}

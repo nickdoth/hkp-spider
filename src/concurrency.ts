@@ -52,6 +52,22 @@ export class FiberPool extends EventEmitter {
     stop() {
         this.stoped = true;
     }
+
+    stopWhenProcessed(count) {
+        this.on('taskend', () => {
+            if (this.taskendCount === count) {
+                this.stop();
+            }
+        });
+    }
+
+    stopWhen(func: () => boolean) {
+        this.on('taskend', () => {
+            if (func()) {
+                this.stop()
+            }
+        })
+    }
 }
 
 export async function mutliIterate<T>(arr: T[], parts: number, func: (s: T[]) => Promise<void>) {

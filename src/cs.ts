@@ -111,11 +111,11 @@ function buildSearchRequest(page = 1) {
 // main
 
 async function main() {
-    const propFile = createWriteStream('./props2.csv');
-    const estateFile = createWriteStream('./estates2.csv');
+    const propFile = createWriteStream('./props1-500.csv');
+    const estateFile = createWriteStream('./estates1-500.csv');
     const pool = new FiberPool(4);
     const START_PAGE = 1;
-    const END_PAGE = 5;
+    const END_PAGE = 500;
     let sum = 0;
 
     // Write Unicode BOM (for Microsoft Excel)

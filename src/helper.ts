@@ -1,3 +1,17 @@
+import { env as domEnv, Config as JsDomConfig } from 'jsdom';
+
+export function getDomWindow(options: JsDomConfig): Promise<Window> {
+    return new Promise((resolve, reject) => {
+        domEnv({
+            ...options,
+            done: (err, window) => {
+                if (err) return reject(err);
+                resolve(window);
+            }
+        });
+    });
+}
+
 export function heavyTrim(str: string) {
     return str.trim().replace(/[\s\n\t]+/g, '');
     // return str.trim();

@@ -124,7 +124,7 @@ async function main() {
 
     for (let i = START_PAGE; i <= END_PAGE; ++i) {
         console.log('== Page: ' + i);
-        let list = await getSearchList(1);
+        let list = await getSearchList(i);
 
         for (let j = 0; j < list.length; ++j) {
             pool.push(() => doDetailPageFetch(list[j].serial_no, i, j));

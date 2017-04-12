@@ -2,7 +2,7 @@ import { getDomWindow } from './helper';
 import { FiberPool } from './concurrency';
 import { createWriteStream } from 'fs';
 
-const HEADER = [ 'estate', '物業校網', '入伙日期', 'area' ];
+const HEADER = [ 'estate', '物業校網', '入伙日期', 'lat', 'lng', 'area' ];
 
 async function getEstateList(): Promise<{ name: string, estId: string }[]> {
     let window = await getDomWindow({ url: 'http://app2.hkp.com.hk/residential_ebook/menu.jsp?lang=zh' });
@@ -28,9 +28,21 @@ async function getResidential(estId: string): Promise<string[]> {
         ];
     });
 
+    let latlng = Array.from(window.document.querySelectorAll('script')).filter(scriptElm => {
+        return scriptElm.textContent.indexOf('initMap()') >= 0;
+    })[0];
+    
+    let pureRow = row.filter(n => HEADER.indexOf(n[0]) > -1).map(n => n[1]);
+
+    if (latlng) {
+        let matches = latlng.textContent.match(/{\s*lat:\s*(.*)\s*,lng:\s*(.*)\s*}/);
+        // console.log();
+        pureRow.push(matches[1], matches[2]);
+    }
+
     // console.log(row);
 
-    return appendArea(row.filter(n => HEADER.indexOf(n[0]) > -1).map(n => n[1]));
+    return appendArea(pureRow);
 }
 
 function appendArea(row: string[]) {
